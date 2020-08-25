@@ -23,6 +23,7 @@ def initialize():
     inventory.create_tables([Product], safe=True)
 
 def build_table():
+    """Cleans CSV data and enters it into the database."""
     with open('inventory.csv', newline='') as inventory:
         reader = csv.reader(inventory)
         columns = next(reader)
@@ -39,3 +40,4 @@ if __name__ == "__main__":
     initialize()
     build_table()
 
+ 
