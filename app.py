@@ -40,7 +40,7 @@ def build_table():
                 )
             except IntegrityError:
                 prev_date = Product.select().where(Product.product_name == row[0]).get()
-                print(prev_date)
+                print(f"{prev_date}: {prev_date.product_name}")
                 print("prev_date: ", prev_date.date_updated)
                 print("     date: ", date.date())
                 if prev_date.date_updated >= date.date():
