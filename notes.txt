@@ -1,0 +1,19 @@
+	    try:
+                Product.create(product_name=row[0])
+            except IntegrityError:
+                # if date_updated (row[3]) is more recent than the previous entry with the same product_name, save this value for product_name
+                prev_entry = Product.select().where(Product.product_name == product_name).get()
+                print(prev_entry)
+            Product.create(product_price=trim.sub('',row[1]),
+                           product_quantity=int(row[2]),
+                           date_updated=datetime.datetime.strptime(row[3], "%m/%d/%Y")
+
+As the function build_table() populates the database, if the function comes to a row with a redundant product_id, it needs to query the database to find the previous product_id, check the date against the date of the current row in the inventory list and save the value with the most recent date.
+	>>> product_id field in inventory.db must be unique
+	>>> If build_table() tries to write a redundant product_id, python will throw an IntegrityError
+		>>> When it does, we need to query the database to find the previous entry with the same product_id
+			# SQL >>> SELECT date_updated FROM product WHERE product_id = {current row's product_id}
+				# use a variable for {current row's product_id}
+			# Check date_updated against {current row's date_updated} if datetime.datetime.strptime(row[3], {timeformat})....
+				# Use a variable for datetime.datetime.strptime({current row's date_updated})
+			# If {current row's product_id} is more recent (greater?) than the previous entry, update (save?) the entry
