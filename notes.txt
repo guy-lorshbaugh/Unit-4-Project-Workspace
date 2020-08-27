@@ -17,3 +17,10 @@ As the function build_table() populates the database, if the function comes to a
 			# Check date_updated against {current row's date_updated} if datetime.datetime.strptime(row[3], {timeformat})....
 				# Use a variable for datetime.datetime.strptime({current row's date_updated})
 			# If {current row's product_id} is more recent (greater?) than the previous entry, update (save?) the entry
+
+10. Create a Menu to make selections
+	Create a function to handle interaction with the user of your app. This function should prompt the user to enter "v" in order to view the details of a single product in the database, ""a" to add a new product to the database, or "b" to make a backup of the entire contents of the database.
+
+11. Displaying a product by its ID - Menu Option V
+	Create a function to handle getting and displaying a product by its product_id.
+
